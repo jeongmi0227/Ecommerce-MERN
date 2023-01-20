@@ -27,7 +27,7 @@ const Language = styled.span`
 `
 
 const SearchContainer = styled.div`
-    border 0.5px solid lightgray;
+    border: 0.5px solid lightgray;
     display:flex;
     align-items:center;
     margin-left:25px;
