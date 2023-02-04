@@ -1,10 +1,18 @@
 import { Add, Remove } from '@material-ui/icons'
 import React from 'react'
+import { useSelector } from 'react-redux'
 import styled from 'styled-components'
 import Announcement from '../components/Announcement'
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
 import { mobile } from '../responsive'
+import StripeCheckout from 'react-stripe-checkout';
+import { useState } from 'react'
+import { useEffect } from 'react'
+import { userRequest } from '../requestMethods'
+import { useNavigate } from 'react-router'
+
+const KEY = process.env.REACT_APP_STRIPE;
 
 
 const Container = styled.div``;
@@ -143,7 +151,39 @@ const Button = styled.button`
     font-weight:600;
 `;
 
-const CART = () => {
+const Cart = () => {
+    const cart = useSelector(state => state.cart);
+    const [stripeToken, setStripeToken] = useState(null);
+    const navigate = useNavigate();
+
+    const onToken = (token) => {
+        setStripeToken(token);
+    }
+
+    useEffect(() => {
+        const makeRequest = async () => {
+            try {
+                console.log('start!');
+                const res = await userRequest.post('/checkout/payment', {
+                    
+                    tokenId: stripeToken.id,
+                  //  amount: cart.total * 100,
+                    amount:500,
+                    
+                });
+                
+                navigate('/success', { state: { data: res.data } })
+                
+            } catch (err) {
+                
+            }
+        };
+        console.log('total',cart.total);
+        console.log('stripeToken',stripeToken);
+        // stripeToken && cart.total > 0 && makeRequest();
+        stripeToken  && makeRequest();
+    }, [stripeToken,cart.total,navigate]);
+    console.log(stripeToken);
   return (
       <Container>
           <Navbar />
@@ -161,52 +201,33 @@ const CART = () => {
               </Top>
               <Bottom>
                   <Info>
-                      <Product>
+                      {cart?.products?.map(product=>(
+                     <Product key={product._id}>
                           <ProductDetail>
-                              <Image src='https://pagesix.com/wp-content/uploads/sites/3/2022/01/pink-shoe.png' />
+                              <Image src={product.img} />
                               <Details>
-                                  <ProductName><b>Product:</b> JESSIE THUNDER SHOES</ProductName>
-                                  <ProductId><b>ID:</b>12323232</ProductId>
-                                  <ProductColor color='lightpink'/>
-                                  <ProductSize><b>Size:</b> 37.5</ProductSize>
+                                      <ProductName><b>Product:</b> {product.title}</ProductName>
+                                      <ProductId><b>ID:</b>{ product._id}</ProductId>
+                                      <ProductColor color={ product.color} />
+                                  <ProductSize><b>Size:</b> {product.size}</ProductSize>
                               </Details>
                           </ProductDetail>
                           <PriceDetail>
                               <ProductAmountContinaer>
                                   <Add />
-                                  <ProductAmount>2</ProductAmount>
+                                      <ProductAmount>{ product.quantity }</ProductAmount>
                                   <Remove/>
                               </ProductAmountContinaer>
-                              <ProductPrice>$ 30</ProductPrice>
+                                  <ProductPrice>$ {product.price * product.quantity}</ProductPrice>
                           </PriceDetail>
-                      </Product>
+                      </Product> ))}
                       <Hr/>
-                      <Product>
-                          <ProductDetail>
-                              <Image src='https://pagesix.com/wp-content/uploads/sites/3/2022/01/White-sneaker.png?w=1024' />
-                              <Details>
-                                  <ProductName><b>Product:</b> REEBOK SHOES</ProductName>
-                                  <ProductId><b>ID:</b>12323232</ProductId>
-                                  <ProductColor color='white'/>
-                                  <ProductSize><b>Size:</b> 45</ProductSize>
-                              </Details>
-                          </ProductDetail>
-                          <PriceDetail>
-                              <ProductAmountContinaer>
-                                  <Add />
-                                  <ProductAmount>2</ProductAmount>
-                                  <Remove/>
-                              </ProductAmountContinaer>
-                              <ProductPrice>$ 50</ProductPrice>
-                          </PriceDetail>
-                      </Product>
-
                   </Info>
                   <Summary>
                       <SummaryTitle>ORDER SUMMARY</SummaryTitle>
                       <SummaryItem>
                           <SummaryItemText>SubTotal</SummaryItemText>
-                          <SummaryItemPrice>$ 80</SummaryItemPrice>
+                          <SummaryItemPrice>$ {cart.total}</SummaryItemPrice>
                       </SummaryItem>
                       <SummaryItem>
                           <SummaryItemText>Estimated Shipping</SummaryItemText>
@@ -218,9 +239,22 @@ const CART = () => {
                       </SummaryItem>
                       <SummaryItem type='total'>
                           <SummaryItemText>Total</SummaryItemText>
-                          <SummaryItemPrice>$ 80</SummaryItemPrice>
+                          <SummaryItemPrice>$ {cart.total}</SummaryItemPrice>
                       </SummaryItem>
-                      <Button>CHECKOUT NOW</Button>
+                      
+                      <StripeCheckout
+                          name='Park Shop'
+                          image='https://avatars.githubusercontent.com/u/51373053?s=400&u=bf5f7235e0319899e967ae27eee166fd80ee2044&v=4'
+                          billingAddress
+                          shippingAddress
+                          description={`Your total is $${cart.total}`}
+                          amount={cart.total * 100}
+                          token={onToken}
+                          stripeKey={KEY}
+                      >
+                          
+                      <Button>CHECKOUT NOW</Button>    
+                      </StripeCheckout>
                   </Summary>
               </Bottom>
           </Wrapper>
@@ -229,4 +263,4 @@ const CART = () => {
   )
 }
 
-export default CART
+export default Cart

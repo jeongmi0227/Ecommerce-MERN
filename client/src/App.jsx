@@ -4,14 +4,14 @@ import Login from "./pages/Login";
 import Product from "./pages/Product";
 import ProductList from "./pages/ProductList";
 import Register from "./pages/Register";
-
+import Success from "./pages/Success";
 import {
   BrowserRouter as Router,
   Route,
   Routes,
   Navigate
 } from 'react-router-dom';
-import CART from "./pages/Cart";
+
 
 const App = () => {
   const user = true;
@@ -24,6 +24,7 @@ const App = () => {
         <Route path='/cart' element={<Cart />} />
         <Route path='/login' element={user ? (<Navigate replace to='/' />) : <Login />} />
         <Route path='/register' element={user ? (<Navigate replace to='/' />) : (<Register />)} />
+        <Route path='/success' element={<Success />} />
       </Routes>
     </Router>
     

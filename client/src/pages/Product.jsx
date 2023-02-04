@@ -10,6 +10,8 @@ import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
 import Newsletters from '../components/Newsletters'
 import { addProduct } from '../redux/cartRedux'
+import { useDispatch } from 'react-redux'
+
 import { publicRequest } from '../requestMethods'
 import { mobile } from '../responsive';
 const Container = styled.div``;
@@ -119,12 +121,14 @@ const Product = () => {
     const [quantity, setQuantity] = useState(1);
     const [color, setColor] = useState('');
     const [size, setSize] = useState('');
+    const dispatch = useDispatch();
 
     useEffect(() => {
         const getProduct = async () => {
             try {
                 const res = await publicRequest.get('/products/find/' + id);
                 setProduct(res.data);
+                setSize(res.data.size);
                 console.log(res.data);
             } catch (err) {
                 
@@ -142,7 +146,8 @@ const Product = () => {
     }
     const handleClick = () => {
         //UPDATE CART
-        // addProduct({ product, quantity });
+        console.log(product);
+        dispatch(addProduct({ ...product, quantity, color, size }));
 
     }
   return (
