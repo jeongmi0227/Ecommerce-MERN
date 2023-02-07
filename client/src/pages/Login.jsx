@@ -1,4 +1,5 @@
 import React from 'react'
+import { useState } from 'react';
 import styled from 'styled-components'
 import { mobile } from '../responsive';
 
@@ -51,6 +52,8 @@ const Link = styled.a`
   cursor: pointer;
 `;
 const Login = () => {
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
   return (
     <Container>
       <Wrapper>

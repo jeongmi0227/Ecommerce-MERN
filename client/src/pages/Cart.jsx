@@ -172,14 +172,14 @@ const Cart = () => {
                     
                 });
                 
-                navigate('/success', { state: { data: res.data } })
+                navigate('/success', { state: { stripeData: res.data,products:cart, } })
                 
             } catch (err) {
                 
             }
         };
-        console.log('total',cart.total);
-        console.log('stripeToken',stripeToken);
+        // console.log('total',cart.total);
+        // console.log('stripeToken',stripeToken);
         // stripeToken && cart.total > 0 && makeRequest();
         stripeToken  && makeRequest();
     }, [stripeToken,cart.total,navigate]);
