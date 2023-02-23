@@ -48,3 +48,70 @@ export const userData = [
         "Active User": 1490,
     },
 ];
+
+export const userRows = [
+    {
+        id: 1, username: 'Jon Snow',
+        avatar: "https://avatars.githubusercontent.com/u/51373053?s=400&u=bf5f7235e0319899e967ae27eee166fd80ee2044&v=4",
+        email: "Jon@gmail.com",
+        status: "active",
+        transaction: "$120.00",
+    },
+    {
+      id: 2, username: 'Jon Snow',
+      avatar: "https://avatars.githubusercontent.com/u/51373053?s=400&u=bf5f7235e0319899e967ae27eee166fd80ee2044&v=4",
+      email: "Jon@gmail.com",
+      status: "active",
+      transaction: "$120.00",
+    },
+    {
+      id: 3, username: 'Jon Snow',
+      avatar: "https://avatars.githubusercontent.com/u/51373053?s=400&u=bf5f7235e0319899e967ae27eee166fd80ee2044&v=4",
+      email: "Jon@gmail.com",
+      status: "active",
+      transaction: "$120.00",
+    },
+    {
+      id: 4, username: 'Jon Snow',
+      avatar: "https://avatars.githubusercontent.com/u/51373053?s=400&u=bf5f7235e0319899e967ae27eee166fd80ee2044&v=4",
+      email: "Jon@gmail.com",
+      status: "active",
+      transaction: "$120.00",
+    },
+    {
+      id: 5, username: 'Jon Snow',
+      avatar: "https://avatars.githubusercontent.com/u/51373053?s=400&u=bf5f7235e0319899e967ae27eee166fd80ee2044&v=4",
+      email: "Jon@gmail.com",
+      status: "active",
+      transaction: "$120.00",
+    },
+    {
+      id: 6, username: 'Jon Snow',
+      avatar: "https://avatars.githubusercontent.com/u/51373053?s=400&u=bf5f7235e0319899e967ae27eee166fd80ee2044&v=4",
+      email: "Jon@gmail.com",
+      status: "active",
+      transaction: "$120.00",
+    },
+    {
+      id: 7, username: 'Jon Snow',
+      avatar: "https://avatars.githubusercontent.com/u/51373053?s=400&u=bf5f7235e0319899e967ae27eee166fd80ee2044&v=4",
+      email: "Jon@gmail.com",
+      status: "active",
+      transaction: "$120.00",
+    },
+    {
+      id: 8, username: 'Jon Snow',
+      avatar: "https://avatars.githubusercontent.com/u/51373053?s=400&u=bf5f7235e0319899e967ae27eee166fd80ee2044&v=4",
+      email: "Jon@gmail.com",
+      status: "active",
+      transaction: "$120.00",
+    },
+    {
+      id: 9, username: 'Jon Snow',
+      avatar: "https://avatars.githubusercontent.com/u/51373053?s=400&u=bf5f7235e0319899e967ae27eee166fd80ee2044&v=4",
+      email: "Jon@gmail.com",
+      status: "active",
+      transaction: "$120.00",
+  },
+  
+];
