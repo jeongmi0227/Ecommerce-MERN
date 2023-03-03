@@ -49,6 +49,22 @@ export const userData = [
     },
 ];
 
+export const productData = [
+  {
+      name: 'Jan',
+      "Sales": 4000,
+  },
+  { 
+      name: 'Feb',
+      "Sales": 3000,
+  },
+  {
+      name: 'Mar',
+      "Sales": 5000,
+  },
+ 
+];
+
 export const userRows = [
     {
         id: 1, username: 'Jon Snow',
@@ -114,4 +130,71 @@ export const userRows = [
       transaction: "$120.00",
   },
   
+];
+
+export const productRows = [
+  {
+      id: 1, name: 'Apple Airpod',
+      image: "https://avatars.githubusercontent.com/u/51373053?s=400&u=bf5f7235e0319899e967ae27eee166fd80ee2044&v=4",
+      stock: "123",
+      status: "active",
+      price: "$120.00",
+  },
+  {
+    id: 2, name: 'Apple Airpod',
+    image: "https://avatars.githubusercontent.com/u/51373053?s=400&u=bf5f7235e0319899e967ae27eee166fd80ee2044&v=4",
+    stock: "123",
+    status: "active",
+    price: "$120.00",
+  },
+  {
+    id: 3, name: 'Apple Airpod',
+    image: "https://avatars.githubusercontent.com/u/51373053?s=400&u=bf5f7235e0319899e967ae27eee166fd80ee2044&v=4",
+    stock: "123",
+    status: "active",
+    price: "$120.00",
+  },
+  {
+    id: 4, name: 'Apple Airpod',
+    image: "https://avatars.githubusercontent.com/u/51373053?s=400&u=bf5f7235e0319899e967ae27eee166fd80ee2044&v=4",
+    stock: "123",
+    status: "active",
+    price: "$120.00",
+  },
+  {
+    id: 5, name: 'Apple Airpod',
+    image: "https://avatars.githubusercontent.com/u/51373053?s=400&u=bf5f7235e0319899e967ae27eee166fd80ee2044&v=4",
+    stock: "123",
+    status: "active",
+    price: "$120.00",
+  },
+  {
+    id: 6, name: 'Apple Airpod',
+    image: "https://avatars.githubusercontent.com/u/51373053?s=400&u=bf5f7235e0319899e967ae27eee166fd80ee2044&v=4",
+    stock: "123",
+    status: "active",
+    price: "$120.00",
+  },
+  {
+    id: 7, name: 'Apple Airpod',
+    image: "https://avatars.githubusercontent.com/u/51373053?s=400&u=bf5f7235e0319899e967ae27eee166fd80ee2044&v=4",
+    stock: "123",
+    status: "active",
+    price: "$120.00",
+  },
+  {
+    id: 8, name: 'Apple Airpod',
+    image: "https://avatars.githubusercontent.com/u/51373053?s=400&u=bf5f7235e0319899e967ae27eee166fd80ee2044&v=4",
+    stock: "123",
+    status: "active",
+    price: "$120.00",
+  },
+  {
+    id: 9, name: 'Apple Airpod',
+    image: "https://avatars.githubusercontent.com/u/51373053?s=400&u=bf5f7235e0319899e967ae27eee166fd80ee2044&v=4",
+    stock: "123",
+    status: "active",
+    price: "$120.00",
+},
+
 ];
